@@ -175,8 +175,8 @@ collision_mask = 14
 script = ExtResource( 2 )
 
 [node name="texture" type="Sprite" parent="."]
-texture = ExtResource( 5 )
-hframes = 7
+texture = ExtResource( 1 )
+hframes = 11
 
 [node name="anim" type="AnimationPlayer" parent="."]
 autoplay = "idle"
@@ -189,3 +189,17 @@ anims/run = SubResource( 3 )
 visible = false
 position = Vector2( 0, 3 )
 shape = SubResource( 4 )
+
+[node name="raycasts" type="Node" parent="."]
+
+[node name="raycast" type="RayCast2D" parent="raycasts"]
+position = Vector2( -7, -5 )
+enabled = true
+cast_to = Vector2( 0, 12 )
+collision_mask = 8
+
+[node name="raycast2" type="RayCast2D" parent="raycasts"]
+position = Vector2( 8, -5 )
+enabled = true
+cast_to = Vector2( 0, 12 )
+collision_mask = 8
