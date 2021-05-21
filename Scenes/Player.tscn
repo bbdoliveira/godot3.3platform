@@ -6,7 +6,7 @@
 [ext_resource path="res://Assets/Free/Main Characters/Ninja Frog/Jump (32x32).png" type="Texture" id=4]
 [ext_resource path="res://Assets/Free/Main Characters/Ninja Frog/Hit (32x32).png" type="Texture" id=5]
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=1]
 resource_name = "hit"
 length = 0.6
 tracks/0/type = "value"
@@ -46,8 +46,7 @@ tracks/2/keys = {
 "values": [ 7 ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "idle"
+[sub_resource type="Animation" id=2]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("texture:frame")
@@ -86,8 +85,7 @@ tracks/2/keys = {
 "values": [ 11 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "jump"
+[sub_resource type="Animation" id=3]
 tracks/0/type = "value"
 tracks/0/path = NodePath("texture:frame")
 tracks/0/interp = 1
@@ -125,8 +123,7 @@ tracks/2/keys = {
 "values": [ 1 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "run"
+[sub_resource type="Animation" id=4]
 length = 1.1
 loop = true
 tracks/0/type = "value"
@@ -166,7 +163,7 @@ tracks/2/keys = {
 "values": [ 12 ]
 }
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 9, 13 )
 
 [node name="Player" type="KinematicBody2D"]
@@ -180,26 +177,42 @@ hframes = 11
 
 [node name="anim" type="AnimationPlayer" parent="."]
 autoplay = "idle"
-anims/hit = SubResource( 5 )
-anims/idle = SubResource( 1 )
-anims/jump = SubResource( 2 )
-anims/run = SubResource( 3 )
+anims/hit = SubResource( 1 )
+anims/idle = SubResource( 2 )
+anims/jump = SubResource( 3 )
+anims/run = SubResource( 4 )
 
 [node name="collision" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( 0, 3 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
-[node name="raycasts" type="Node" parent="."]
+[node name="raycasts" type="Node2D" parent="."]
 
 [node name="raycast" type="RayCast2D" parent="raycasts"]
-position = Vector2( -7, -5 )
+position = Vector2( -7, 11 )
 enabled = true
 cast_to = Vector2( 0, 12 )
 collision_mask = 8
 
 [node name="raycast2" type="RayCast2D" parent="raycasts"]
-position = Vector2( 8, -5 )
+position = Vector2( 9, 11 )
 enabled = true
 cast_to = Vector2( 0, 12 )
 collision_mask = 8
+
+[node name="camera" type="Camera2D" parent="."]
+current = true
+limit_left = -32
+limit_bottom = 260
+limit_smoothed = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+smoothing_speed = 9.0
+drag_margin_left = 0.4
+drag_margin_top = 0.3
+drag_margin_right = 0.3
+drag_margin_bottom = 0.3
+editor_draw_limits = true
+editor_draw_drag_margin = true
