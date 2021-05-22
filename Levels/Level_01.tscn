@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=2]
+[gd_scene load_steps=99 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Free/Terrain/tiles-8.png" type="Texture" id=2]
@@ -2336,6 +2336,21 @@ points = PoolVector2Array( 0, 0, 17, 0, 17, 17, 0, 17 )
 } ]
 103/z_index = 0
 
+[sub_resource type="Shader" id=89]
+code = "shader_type canvas_item;
+
+uniform vec2 Direction = vec2(1.0, 0.0);
+uniform float Speed = 0.02f;
+
+void fragment(){
+	COLOR = texture(TEXTURE, UV + (Direction * TIME * Speed));
+}"
+
+[sub_resource type="ShaderMaterial" id=90]
+shader = SubResource( 89 )
+shader_param/Direction = Vector2( 1, 0 )
+shader_param/Speed = 0.02
+
 [node name="Level_01" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -2366,13 +2381,14 @@ motion_scale = Vector2( 0.5, 1 )
 motion_mirroring = Vector2( 576, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/clouds"]
+material = SubResource( 90 )
 position = Vector2( 0, -160 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 7 )
 centered = false
 
 [node name="cloud-montain" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2( 0.6, 1 )
+motion_scale = Vector2( 0.6, 0.8 )
 motion_mirroring = Vector2( 576, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/cloud-montain"]
