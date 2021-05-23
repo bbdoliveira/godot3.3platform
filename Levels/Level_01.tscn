@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=2]
+[gd_scene load_steps=99 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Free/Terrain/tiles-8.png" type="Texture" id=2]
@@ -9,6 +9,14 @@
 [ext_resource path="res://Assets/Free/Terrain/3 - Cloud_cover_1.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Free/Terrain/4 - Cloud_cover_2.png" type="Texture" id=8]
 [ext_resource path="res://Scripts/fall-zone.gd" type="Script" id=9]
+[ext_resource path="res://items/apple.tscn" type="PackedScene" id=10]
+[ext_resource path="res://items/banana.tscn" type="PackedScene" id=11]
+[ext_resource path="res://items/cherries.tscn" type="PackedScene" id=12]
+[ext_resource path="res://items/kiwi.tscn" type="PackedScene" id=13]
+[ext_resource path="res://items/melon.tscn" type="PackedScene" id=14]
+[ext_resource path="res://items/orange.tscn" type="PackedScene" id=15]
+[ext_resource path="res://items/strawberry.tscn" type="PackedScene" id=16]
+[ext_resource path="res://items/pineapple.tscn" type="PackedScene" id=17]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -2330,5 +2338,32 @@ __meta__ = {
 
 [node name="collision" type="CollisionShape2D" parent="fall-zone"]
 shape = SubResource( 81 )
+
+[node name="fruits" type="Node2D" parent="."]
+
+[node name="apple" parent="fruits" instance=ExtResource( 10 )]
+position = Vector2( 160, 96 )
+collision_layer = 4
+
+[node name="banana" parent="fruits" instance=ExtResource( 11 )]
+position = Vector2( 272, 32 )
+
+[node name="cherries" parent="fruits" instance=ExtResource( 12 )]
+position = Vector2( 352, 0 )
+
+[node name="kiwi" parent="fruits" instance=ExtResource( 13 )]
+position = Vector2( 96, 96 )
+
+[node name="melon" parent="fruits" instance=ExtResource( 14 )]
+position = Vector2( 224, 96 )
+
+[node name="orange" parent="fruits" instance=ExtResource( 15 )]
+position = Vector2( 384, 112 )
+
+[node name="pineapple" parent="fruits" instance=ExtResource( 17 )]
+position = Vector2( 464, 0 )
+
+[node name="strawberry" parent="fruits" instance=ExtResource( 16 )]
+position = Vector2( 576, 32 )
 
 [connection signal="body_entered" from="fall-zone" to="fall-zone" method="_on_fallzone_body_entered"]
