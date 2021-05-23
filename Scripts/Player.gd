@@ -21,7 +21,7 @@ func _physics_process(delta: float) -> void:
 	
 	_set_animation()
 	
-	print (velocity.y)
+#	print (velocity.y)
 #=============================================================================#
 
 #Faz a movimentação do Player
