@@ -33,10 +33,19 @@ func _get_input():
 	#Verifica para qual lado o player vai e vira a textura.
 	if move_direction !=0:
 		$texture.scale.x = move_direction
+	
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump") && is_grounded:
 		velocity.y = jump_force / 2
+	
+	if event.is_action_pressed("run"):
+		move_speed = 800
+#		print(move_speed)
+	elif event.is_action_released("run"):
+		move_speed = 480
+#		print(move_speed)
+		
 
 func _check_is_grounded():
 	for raycast in raycasts.get_children():
