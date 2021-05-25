@@ -2375,7 +2375,7 @@ position = Vector2( 224, 96 )
 position = Vector2( 384, 112 )
 
 [node name="pineapple" parent="fruits" instance=ExtResource( 17 )]
-position = Vector2( 464, 0 )
+position = Vector2( 472, 0 )
 
 [node name="strawberry" parent="fruits" instance=ExtResource( 16 )]
 position = Vector2( 576, 32 )
