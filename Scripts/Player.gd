@@ -63,7 +63,7 @@ func _set_animation():
 		anim = "run"
 		
 	if velocity.y > 0 and !is_grounded:
-		anim = "run"
+		anim = "fall"
 		
 	if $anim.assigned_animation != anim:
 		$anim.play(anim)
