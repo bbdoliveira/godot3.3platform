@@ -5,6 +5,8 @@ var move_speed = 480
 var gravity = 1200
 var jump_force = -820
 var is_grounded #Vai verificar se ele esta no chão!
+var health = 3
+var hurted = false
 onready var raycasts = $raycasts
 
 
@@ -65,5 +67,14 @@ func _set_animation():
 	if velocity.y > 0 and !is_grounded:
 		anim = "fall"
 		
+	if hurted:
+		anim = "hit"
+		
 	if $anim.assigned_animation != anim:
 		$anim.play(anim)
+
+
+func _on_hurtbox_body_entered(body):
+		hurted = true
+		yield(get_tree().create_timer(0.5), "timeout")
+		hurted = false

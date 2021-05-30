@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Assets/Free/Main Characters/Ninja Frog/Idle (32x32).png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
@@ -206,6 +206,9 @@ tracks/2/keys = {
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 9, 13 )
 
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 12, 10 )
+
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 0, -16 )
 collision_mask = 94
@@ -256,3 +259,12 @@ drag_margin_right = 0.3
 drag_margin_bottom = 0.3
 editor_draw_limits = true
 editor_draw_drag_margin = true
+
+[node name="hurtbox" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 2
+
+[node name="collision" type="CollisionShape2D" parent="hurtbox"]
+shape = SubResource( 7 )
+
+[connection signal="body_entered" from="hurtbox" to="." method="_on_hurtbox_body_entered"]
