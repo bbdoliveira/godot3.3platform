@@ -24,7 +24,6 @@ func _physics_process(delta):
 
 func _on_anim_animation_finished(anim_name):
 	if anim_name == "idle":
-		$texture.flip_h != $texture.flip_h
 		$ray_wall.scale.x *= -1
 		move_direction *= -1
 		$anim.play("run")

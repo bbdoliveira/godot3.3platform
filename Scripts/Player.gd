@@ -25,7 +25,12 @@ func _physics_process(delta: float) -> void:
 	
 	_set_animation()
 	
-#	print (velocity.y)
+	#Verifica colisão com a plataforma
+	for platforms in get_slide_count():
+		var collision = get_slide_collision(platforms)
+		if collision.collider.has_method("collide_with"):
+			collision.collider.collide_with(collision, self)
+
 #=============================================================================#
 
 #Faz a movimentação do Player
