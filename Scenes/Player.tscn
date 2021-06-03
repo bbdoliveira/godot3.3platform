@@ -203,8 +203,8 @@ tracks/2/keys = {
 "values": [ 12 ]
 }
 
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 9, 13 )
+[sub_resource type="CapsuleShape2D" id=8]
+height = 4.0
 
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 12, 10 )
@@ -226,9 +226,8 @@ anims/jump = SubResource( 4 )
 anims/run = SubResource( 5 )
 
 [node name="collision" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( 0, 3 )
-shape = SubResource( 6 )
+shape = SubResource( 8 )
 
 [node name="raycasts" type="Node2D" parent="."]
 
@@ -236,13 +235,13 @@ shape = SubResource( 6 )
 position = Vector2( -7, 11 )
 enabled = true
 cast_to = Vector2( 0, 12 )
-collision_mask = 8
+collision_mask = 24
 
 [node name="raycast2" type="RayCast2D" parent="raycasts"]
 position = Vector2( 9, 11 )
 enabled = true
 cast_to = Vector2( 0, 12 )
-collision_mask = 8
+collision_mask = 24
 
 [node name="camera" type="Camera2D" parent="."]
 current = true

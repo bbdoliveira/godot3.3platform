@@ -1,16 +1,17 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/Free/Traps/Falling Platforms/On (32x10).png" type="Texture" id=1]
 [ext_resource path="res://Assets/Free/Traps/Falling Platforms/Off.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/FallingPlatform.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 5 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "off"
 length = 0.2
 tracks/0/type = "value"
-tracks/0/path = NodePath("texture:frame")
+tracks/0/path = NodePath("../FallingPlatform/texture:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -22,7 +23,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("texture:texture")
+tracks/1/path = NodePath("../FallingPlatform/texture:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -34,7 +35,7 @@ tracks/1/keys = {
 "values": [ ExtResource( 2 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("texture:hframes")
+tracks/2/path = NodePath("../FallingPlatform/texture:hframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -45,13 +46,36 @@ tracks/2/keys = {
 "update": 1,
 "values": [ 1 ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("../FallingPlatform/texture:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../FallingPlatform/texture:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
 
-[sub_resource type="Animation" id=2]
-resource_name = "on"
+[sub_resource type="Animation" id=3]
 length = 0.8
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("texture:frame")
+tracks/0/path = NodePath("../FallingPlatform/texture:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -63,7 +87,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("texture:texture")
+tracks/1/path = NodePath("../FallingPlatform/texture:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -75,7 +99,7 @@ tracks/1/keys = {
 "values": [ ExtResource( 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("texture:hframes")
+tracks/2/path = NodePath("../FallingPlatform/texture:hframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -86,19 +110,90 @@ tracks/2/keys = {
 "update": 1,
 "values": [ 4 ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("../FallingPlatform/texture:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "shake"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("../FallingPlatform/texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../FallingPlatform/texture:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../FallingPlatform/texture:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../FallingPlatform/texture:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 5.0, 0.0, -5.0, 0.0, 5.0, 0.0, -5.0, 0.0 ]
+}
 
 [node name="FallingPlatform" type="KinematicBody2D"]
+collision_layer = 16
+script = ExtResource( 3 )
 
 [node name="texture" type="Sprite" parent="."]
-texture = ExtResource( 2 )
+texture = ExtResource( 1 )
+hframes = 4
 
 [node name="collision" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource( 1 )
+one_way_collision = true
 
 [node name="anim" type="AnimationPlayer" parent="."]
 autoplay = "on"
-anims/off = SubResource( 3 )
-anims/on = SubResource( 2 )
+anims/off = SubResource( 2 )
+anims/on = SubResource( 3 )
+anims/shake = SubResource( 4 )
 
 [node name="timer" type="Timer" parent="."]
+
+[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
+[connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]
