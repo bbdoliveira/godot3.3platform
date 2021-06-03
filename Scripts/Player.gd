@@ -85,7 +85,7 @@ func knockback():
 	velocity.x = -knockback_dir * knockback_int
 	velocity = move_and_slide(velocity)
 
-func _on_hurtbox_body_entered(body):
+func _on_hurtbox_body_entered(_body):
 	health -= 1
 	hurted = true
 	knockback()

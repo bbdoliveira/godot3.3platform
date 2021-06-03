@@ -1,6 +1,6 @@
 extends Area2D
 
-func _on_items_body_entered(body):
+func _on_items_body_entered(_body):
 	$anim.play("collected")
 
 

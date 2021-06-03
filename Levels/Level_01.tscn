@@ -2327,6 +2327,7 @@ centered = false
 
 [node name="fall-zone" type="Area2D" parent="."]
 position = Vector2( 1040, 304 )
+collision_layer = 8
 script = ExtResource( 9 )
 __meta__ = {
 "_edit_group_": true
@@ -2351,13 +2352,13 @@ shape = SubResource( 81 )
 position = Vector2( 49, 103 )
 
 [node name="melon" parent="fruits" instance=ExtResource( 14 )]
-position = Vector2( 1383, 153 )
+position = Vector2( 1384, 152 )
 
 [node name="melon2" parent="fruits" instance=ExtResource( 14 )]
-position = Vector2( 1449, 152 )
+position = Vector2( 1448, 152 )
 
 [node name="melon3" parent="fruits" instance=ExtResource( 14 )]
-position = Vector2( 1511, 151 )
+position = Vector2( 1512, 152 )
 
 [node name="Mushroom" parent="." instance=ExtResource( 18 )]
 position = Vector2( 802, 240 )
@@ -2378,10 +2379,13 @@ position = Vector2( 744, 144 )
 position = Vector2( 489, 192 )
 
 [node name="FallingPlatform" parent="." instance=ExtResource( 16 )]
-position = Vector2( 140, 182 )
+position = Vector2( 124, 189 )
 
 [node name="FallingPlatform2" parent="." instance=ExtResource( 16 )]
-position = Vector2( 246, 182 )
+position = Vector2( 194, 189 )
+
+[node name="FallingPlatform3" parent="." instance=ExtResource( 16 )]
+position = Vector2( 263, 189 )
 
 [connection signal="body_entered" from="fall-zone" to="fall-zone" method="_on_fallzone_body_entered"]
 [connection signal="body_entered" from="fall-zone2" to="fall-zone2" method="_on_fallzone_body_entered"]
