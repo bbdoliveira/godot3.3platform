@@ -1,6 +1,7 @@
 extends KinematicBody2D
 #warnings-disable
 
+var UP = Vector2.UP
 var velocity = Vector2.ZERO
 var velocidade_atual = 480
 var move_speed = velocidade_atual
@@ -23,7 +24,7 @@ func _physics_process(delta: float) -> void:
 	if !hurted:
 		_get_input()
 
-	velocity = move_and_slide(velocity)
+	velocity = move_and_slide(velocity, UP)
 	
 	is_grounded = _check_is_grounded()
 	
