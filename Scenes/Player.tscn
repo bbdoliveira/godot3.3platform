@@ -203,7 +203,7 @@ tracks/2/keys = {
 "values": [ 12 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=8]
+[sub_resource type="CapsuleShape2D" id=6]
 height = 4.0
 
 [sub_resource type="RectangleShape2D" id=7]
@@ -227,7 +227,7 @@ anims/run = SubResource( 5 )
 
 [node name="collision" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 3 )
-shape = SubResource( 8 )
+shape = SubResource( 6 )
 
 [node name="raycasts" type="Node2D" parent="."]
 

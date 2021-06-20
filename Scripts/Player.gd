@@ -1,7 +1,9 @@
 extends KinematicBody2D
+#warnings-disable
 
 var velocity = Vector2.ZERO
-var move_speed = 480
+var velocidade_atual = 480
+var move_speed = velocidade_atual
 var gravity = 1200
 var jump_force = -820
 var is_grounded #Vai verificar se ele esta no chão!
@@ -16,8 +18,10 @@ onready var raycasts = $raycasts
 
 func _physics_process(delta: float) -> void:
 	velocity.y += gravity * delta
-	
-	_get_input()
+	velocity.x = 0
+
+	if !hurted:
+		_get_input()
 
 	velocity = move_and_slide(velocity)
 	
@@ -50,10 +54,10 @@ func _input(event: InputEvent) -> void:
 		velocity.y = jump_force / 2
 	
 	if event.is_action_pressed("run"):
-		move_speed = 800
+		move_speed = velocidade_atual * 2
 #		print(move_speed)
 	elif event.is_action_released("run"):
-		move_speed = 480
+		move_speed = velocidade_atual
 #		print(move_speed)
 		
 
@@ -96,3 +100,7 @@ func _on_hurtbox_body_entered(_body):
 	if health < 1:
 		queue_free()
 		get_tree().reload_current_scene()
+
+
+func _on_anim_animation_finished(_anim_name: String):
+	pass
