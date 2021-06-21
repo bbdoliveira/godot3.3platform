@@ -101,7 +101,6 @@ func _on_hurtbox_body_entered(_body):
 	if health < 1:
 		queue_free()
 		get_tree().reload_current_scene()
-		Global.fruits = 0
 
 
 func _on_anim_animation_finished(_anim_name: String):
