@@ -7,7 +7,7 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 7.42629
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "collected"
 length = 0.6
 tracks/0/type = "value"
@@ -47,8 +47,7 @@ tracks/2/keys = {
 "values": [ 6 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "motion"
+[sub_resource type="Animation" id=3]
 length = 1.6
 loop = true
 tracks/0/type = "value"
@@ -103,8 +102,8 @@ shape = SubResource( 1 )
 [node name="anim" type="AnimationPlayer" parent="."]
 autoplay = "motion"
 playback_speed = 1.5
-anims/collected = SubResource( 3 )
-anims/motion = SubResource( 2 )
+anims/collected = SubResource( 2 )
+anims/motion = SubResource( 3 )
 
 [connection signal="body_entered" from="." to="." method="_on_items_body_entered"]
 [connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]

@@ -14,6 +14,10 @@ config/name="Godot 3 . 3 Platform"
 run/main_scene="res://Levels/Level_01.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://Scripts/Global.gd"
+
 [display]
 
 window/size/width=320
