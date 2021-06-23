@@ -43,6 +43,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [ 6 ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("collision:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "motion"
@@ -84,12 +96,27 @@ tracks/2/keys = {
 "update": 1,
 "values": [ 17 ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("collision:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [node name="orange" instance=ExtResource( 2 )]
 
 [node name="apple" parent="." index="0"]
 texture = ExtResource( 1 )
-frame = 0
+hframes = 17
+
+[node name="collision" parent="." index="1"]
+disabled = false
 
 [node name="anim" parent="." index="2"]
 anims/collected = SubResource( 1 )

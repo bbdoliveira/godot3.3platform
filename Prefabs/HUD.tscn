@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/Free/Menu/Score/FruitsBag.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Free/Menu/Fonts/ChakraPetch-Bold.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Scripts/score.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Free/Menu/Score/heart.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Free/Menu/Score/clock.png" type="Texture" id=5]
+[ext_resource path="res://Scripts/TimeCounter.gd" type="Script" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 18
@@ -13,16 +16,97 @@ font_data = ExtResource( 2 )
 
 [node name="HUD" type="CanvasLayer"]
 
-[node name="Holder" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -159.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Icon" type="TextureRect" parent="Holder"]
+[node name="Holder" type="Control" parent="HBoxContainer"]
+margin_right = 104.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer/Holder"]
 margin_right = 40.0
 margin_bottom = 40.0
+rect_scale = Vector2( 0.892096, 0.882949 )
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Holder2" type="Control" parent="HBoxContainer"]
+margin_left = 108.0
+margin_right = 212.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+minutes = 1
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer/Holder2"]
+margin_left = 7.0
+margin_top = 1.0
+margin_right = 40.0
+margin_bottom = 35.0
+rect_scale = Vector2( 0.892096, 0.882949 )
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="minutes" type="Label" parent="HBoxContainer/Holder2"]
+margin_left = 37.0
+margin_top = 5.0
+margin_right = 62.0
+margin_bottom = 29.0
+custom_fonts/font = SubResource( 1 )
+text = "00"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="seconds" type="Label" parent="HBoxContainer/Holder2"]
+margin_left = 64.0
+margin_top = 5.0
+margin_right = 89.0
+margin_bottom = 29.0
+custom_fonts/font = SubResource( 1 )
+text = "00"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="HBoxContainer/Holder2"]
+autostart = true
+
+[node name="Holder3" type="Control" parent="HBoxContainer"]
+margin_left = 216.0
+margin_right = 320.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer/Holder3"]
+margin_left = 17.0
+margin_top = 2.0
+margin_right = 50.0
+margin_bottom = 35.0
 rect_scale = Vector2( 0.892096, 0.882949 )
 texture = ExtResource( 1 )
 expand = true
@@ -30,10 +114,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="score" type="Label" parent="Holder"]
-margin_left = 32.0
+[node name="score" type="Label" parent="HBoxContainer/Holder3"]
+margin_left = 49.0
 margin_top = 5.0
-margin_right = 72.0
+margin_right = 76.0
 margin_bottom = 32.0
 custom_fonts/font = SubResource( 1 )
 text = "00"
@@ -43,3 +127,5 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[connection signal="timeout" from="HBoxContainer/Holder2/Timer" to="HBoxContainer/Holder2" method="_on_Timer_timeout"]
