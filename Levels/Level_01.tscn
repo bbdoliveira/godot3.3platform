@@ -2447,3 +2447,5 @@ position = Vector2( 947, 240 )
 [connection signal="body_entered" from="fall-zone" to="fall-zone" method="_on_fallzone_body_entered"]
 [connection signal="body_entered" from="fall-zone3" to="fall-zone3" method="_on_fallzone_body_entered"]
 [connection signal="body_entered" from="fall-zone2" to="fall-zone2" method="_on_fallzone_body_entered"]
+
+[editable path="HUD"]

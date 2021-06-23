@@ -1,4 +1,5 @@
 extends Control
+#warnings-disable
 
 export (int) var minutes = 0
 export (int) var seconds = 0

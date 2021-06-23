@@ -8,11 +8,18 @@ var move_speed = velocidade_atual
 var gravity = 1200
 var jump_force = -820
 var is_grounded #Vai verificar se ele esta no chão!
-var health = 3
+var player_health = 3
+var max_health = 3
 var hurted = false
 var knockback_dir = 1    #Direção do "empurrão"
 var knockback_int = 500  #Intensidade do "empurrão"
 onready var raycasts = $raycasts
+
+signal change_life(player_health)
+
+func _ready():
+	connect("change_life", get_parent().get_node("HUD/HBoxContainer/Holder"), "on_change_life")
+	emit_signal("change_life", max_health)
 
 
 #================Função principal que faz o game Roda!=========================#
@@ -91,14 +98,15 @@ func knockback():
 	velocity = move_and_slide(velocity)
 
 func _on_hurtbox_body_entered(_body):
-	health -= 1
+	player_health -= 1
 	hurted = true
+	emit_signal("change_life", player_health)
 	knockback()
 	get_node("hurtbox/collision").set_deferred("disabled", true)
 	yield(get_tree().create_timer(0.5), "timeout")
 	get_node("hurtbox/collision").set_deferred("disabled", false)
 	hurted = false
-	if health < 1:
+	if player_health < 1:
 		queue_free()
 		get_tree().reload_current_scene()
 
